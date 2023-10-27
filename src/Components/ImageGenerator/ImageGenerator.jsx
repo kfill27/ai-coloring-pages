@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react'
 import './ImageGenerator.css'
-import default_image from '../Assets/default_image.svg'
+import ImageCarousel from './ImageCarousel';
+import default_image from '../Assets/home_carousel1.png'
 
 export const ImageGenerator = () => {
     const[image_url, setImage_url] = useState("/");
@@ -18,8 +19,7 @@ export const ImageGenerator = () => {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization:
-                    `Bearer ${process.env.REACT_APP_OPENAI}`,
+                    Authorization: `Bearer ${process.env.REACT_APP_OPENAI}`,
                     "User-Agent":"Chrome"
                 },
                 body:JSON.stringify({
@@ -39,6 +39,7 @@ export const ImageGenerator = () => {
     <div className='ai-image-generator'>
         <div className='header'>AI Generated <span>Coloring Pages</span></div>
         <div className="img-loading">
+            {/* <ImageCarousel/> */}
             <div className="image"><img src={image_url==="/"?default_image:image_url} alt="" /></div>
             <div className="loading">
                 <div className={loading?"loading-bar-full":"loading-bar"}></div>
@@ -46,7 +47,8 @@ export const ImageGenerator = () => {
             </div>
         </div>
         <div className="search-box">
-            <input type="text" ref={inputRef} className='search-input' placeholder='Describe what you want to see' name="" id="" />
+            <input 
+                type="text" ref={inputRef} className='search-input' placeholder='Describe what you want to see' name="" id="" />
             <div className="generate-btn" onClick={()=>{ImageGenerator()}}>Generate</div>
         </div>
     </div>
