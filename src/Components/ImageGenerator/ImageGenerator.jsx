@@ -1,6 +1,5 @@
 import React, { useRef, useState } from 'react'
 import './ImageGenerator.css'
-import ImageCarousel from './ImageCarousel';
 import default_image from '../Assets/home_carousel1.png'
 
 export const ImageGenerator = () => {
